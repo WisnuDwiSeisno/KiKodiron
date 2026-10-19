@@ -5,34 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KiKodiron - Menu</title>
+    <title>Brewly Coffee - Menu</title>
 </head>
 
 <body>
 
-    <h1>KiKodiron</h1>
+    <h1>Brewly Coffee</h1>
 
     <h2>Our Menu</h2>
 
-    @foreach ($products as $product)
-        <div>
-            <h3>{{ $product->name }}</h3>
+    @foreach ($categories as $category)
 
-            <p>
-                Category:
-                {{ $product->category->name }}
-            </p>
+        <h3>{{ $category->name }}</h3>
 
-            <p>
-                {{ $product->description }}
-            </p>
+        @forelse ($category->products as $product)
 
-            <p>
-                Rp {{ number_format($product->price, 0, ',', '.') }}
-            </p>
-        </div>
+            <div>
+                <h4>{{ $product->name }}</h4>
 
-        <hr>
+                <p>
+                    {{ $product->description }}
+                </p>
+
+                <p>
+                    Rp {{ number_format($product->price, 0, ',', '.') }}
+                </p>
+            </div>
+
+            <hr>
+
+        @empty
+
+            <p>Belum ada menu di kategori ini.</p>
+
+        @endforelse
+
     @endforeach
 
 </body>
