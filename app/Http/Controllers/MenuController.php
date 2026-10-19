@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Category;
 
 class MenuController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->get();
+        $categories = Category::with('products')->get();
 
-        return view('menu.index', compact('products'));
+        return view('menu.index', compact('categories'));
     }
 }
