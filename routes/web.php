@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/menu', [MenuController::class, 'index']);
+Route::get('/menu/{slug}', [MenuController::class, 'category']);
+Route::get('/menu/{category}/{product}', [MenuController::class, 'show']);
